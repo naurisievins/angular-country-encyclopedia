@@ -1,0 +1,16 @@
+<div class="container">
+      <!-- Search Bar -->
+      <mat-form-field appearance="fill">
+        <mat-label>Search</mat-label>
+        <input matInput [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChange()" />
+      </mat-form-field>
+  
+      <!-- Scrollable Country List -->
+      <div class="country-container" *ngIf="countries.length">
+        <div *ngFor="let country of countries">
+          <app-country-search-item [country]="country"></app-country-search-item>
+        </div>
+      </div>
+
+      <p *ngIf="!countries.length">No countries found.</p>
+</div>

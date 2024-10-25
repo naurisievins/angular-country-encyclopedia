@@ -1,0 +1,16 @@
+.content {
+  box-sizing: border-box;
+  margin: auto; /* Center the box horizontally and add vertical spacing */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.wrapper {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  margin: 20px 100px;
+  overflow: hidden;
+}
