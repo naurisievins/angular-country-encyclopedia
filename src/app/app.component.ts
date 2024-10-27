@@ -17,7 +17,7 @@ import { TopNavComponent } from './components/top-nav/top-nav.component';
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    TopNavComponent
+    TopNavComponent,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

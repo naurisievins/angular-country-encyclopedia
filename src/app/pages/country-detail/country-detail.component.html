@@ -1,0 +1,148 @@
+<ng-container>
+  <div class="wrapper">
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <div class="grid-container">
+
+          <div class="top-container">
+            <div class="btn-container">
+              <button mat-raised-button (click)="goBack()">
+                <mat-icon>arrow_back</mat-icon>
+                <span class="title">Back</span>
+              </button>
+
+              <button mat-raised-button [routerLink]="['/']">
+                <span class="title">Back to start</span>
+              </button>
+            </div>
+          </div>
+
+          <div *ngIf="loadingCountryData; else showCountry" class="loading-container">
+            <app-spinner [text]="'Fetching country data...'"></app-spinner>
+          </div>
+
+          <ng-template #showCountry>
+            <ng-container *ngIf="countryData; else noData">
+              <div class="country-container">
+                <div class="flag-container">
+                  <img [src]="countryData.flags.svg" [alt]="countryData.flags.alt || 'Flag'" />
+
+                  <button mat-raised-button (click)="toggleFavorite(countryData)">
+                    <mat-icon [color]="isFavorite(countryData) ? 'warn' : 'grey'">star</mat-icon>
+                    <span *ngIf="isFavorite(countryData); else notFavorite">Remove from Favorites</span>
+                    <ng-template #notFavorite>
+                      Add to Favorites
+                    </ng-template>
+                  </button>
+                </div>
+
+                <div class="country-detail-container">
+                  <div class="content-wrapper">
+                    <h1>{{ countryData.name.common }}</h1>
+                  </div>
+
+                  <div class="content-wrapper">
+                    <h4>Official Name</h4>
+                    <span>{{ countryData.name.official }}</span>
+                  </div>
+
+                  <div class="content-wrapper">
+                    <h4>Population</h4>
+                    <span>{{ countryData.population | number }}</span>
+                  </div>
+
+                  <div class="content-wrapper">
+                    <h4>Area</h4>
+                    <span>{{ countryData.area | number }} km²</span>
+                  </div>
+
+                  <div class="content-wrapper">
+                    <h4>Rank by Population</h4>
+                    <span>#{{ rankByPopulation }}</span>
+                  </div>
+
+                  <div class="content-wrapper">
+                    <h4>Country Codes</h4>
+                    <mat-table [dataSource]="dataSource" class="mat-code-table">
+                      <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+                        <mat-header-cell *matHeaderCellDef> {{ column }} </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{ row[column] }} </mat-cell>
+                      </ng-container>
+
+                      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+                  </div>
+
+                  <div class="lang-container">
+                    <div class="content-wrapper">
+                      <h4>Languages</h4>
+                      <mat-button-toggle-group [(ngModel)]="selectedLanguage"
+                        (change)="getCountriesByLang($event.value)">
+                        <mat-button-toggle *ngFor="let language of (countryData.languages | keyvalue)"
+                          [value]="language.value">
+                          <span class="text-align">{{ language.value }}</span>
+                        </mat-button-toggle>
+                      </mat-button-toggle-group>
+                    </div>
+
+                    <div class="content-wrapper">
+                      <div *ngIf="loadingCountriesByLang; else countriesByLangLoaded" class="loading-container">
+                        <app-spinner [size]="20" [text]="'Fetching countries...'"></app-spinner>
+                      </div>
+
+                      <ng-template #countriesByLangLoaded>
+                        <h4>
+                          <span *ngIf="countriesByLang && countriesByLang.length;" class="">
+                            {{ selectedLanguage }} speaking countries
+                          </span>
+                          <span *ngIf="countriesByLang && countriesByLang.length > 1">
+                            ({{countriesByLang.length}})
+                          </span>
+                        </h4>
+                        <div class="countries-container"
+                          *ngIf="countriesByLang && countriesByLang.length; else noCountriesByLangData">
+                          <div *ngFor="let country of countriesByLang">
+                            <app-country-item-sm [country]="country"></app-country-item-sm>
+                          </div>
+                        </div>
+
+                        <ng-template #noCountriesByLangData>
+                          <span>Couldn't find any countries that speak this language.</span>
+                        </ng-template>
+                      </ng-template>
+                    </div>
+                  </div>
+
+                  <div class="content-wrapper">
+                    <h4>Neighboring Countries
+                      <span *ngIf="countryData.borders.length > 1">({{ countryData.borders.length }})</span>
+                    </h4>
+                    <div *ngIf="countryData.borders.length > 0; else noNeighboringCountries" class="btn-container">
+                      <div *ngFor="let border of countryData.borders">
+                        <button mat-raised-button [routerLink]="['/country', border]">
+                          {{ border }}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <ng-template #noNeighboringCountries>
+                    No neighboring countries
+                  </ng-template>
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-template #noData>
+              <div class="info-container">
+                Country could not be found
+              </div>
+            </ng-template>
+          </ng-template>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-container>

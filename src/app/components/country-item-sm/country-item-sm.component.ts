@@ -3,23 +3,23 @@ import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
 import { FavoriteService } from '../../services/favorite/favorite.service';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
-interface Country {
-  name: {
-    common: string
-  }; // Common name of the country
-  cca2: string; // Official name of the country
-}
+import { MatButtonModule } from '@angular/material/button';
+import { Country } from '../../models/country.model';
 
 @Component({
-  selector: 'app-country-search-item',
+  selector: 'app-country-item-sm',
   standalone: true,
-  imports: [MatIconModule, RouterLink, CommonModule],
-  templateUrl: './country-search-item.component.html',
-  styleUrl: './country-search-item.component.css'
+  imports: [
+    MatIconModule,
+    RouterLink,
+    CommonModule,
+    MatButtonModule
+  ],
+  templateUrl: './country-item-sm.component.html',
+  styleUrl: './country-item-sm.component.css'
 })
-export class CountrySearchItemComponent {
-  @Input() country: any; // Define your country type appropriately
+export class CountryItemSm {
+  @Input() country: any; // TODO
 
   constructor(private favoriteService: FavoriteService) {}
 
@@ -28,6 +28,6 @@ export class CountrySearchItemComponent {
   }
 
   isFavorite(country: Country): boolean {
-    return this.favoriteService.isFavorite(country);
+    return this.favoriteService.isFavorite(country.cca2);
   }
 }

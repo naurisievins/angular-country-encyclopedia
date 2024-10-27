@@ -1,1 +1,17 @@
-<p>search-bar works!</p>
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer mode="side" class="sidenav">
+        <h2>Favorites</h2>
+        <p>Your favorite countries will be displayed here.</p>
+        <!-- Add more content as needed -->
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <nav class="top-nav">
+            <a routerLink="/" class="title-link">
+                <span class="material-icons globe-icon">public</span>
+                <h1>Country Encyclopedia</h1>
+                <button mat-button (click)="drawer.toggle()">My Favorites</button>
+            </a>
+        </nav>
+    </mat-sidenav-content>
+</mat-sidenav-container>

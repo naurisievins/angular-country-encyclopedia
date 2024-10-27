@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
-import { CountryDetailComponent } from './components/country-detail/country-detail.component';
-import { CountryListComponent } from './components/country-list/country-list.component';
+import { CountryDetailComponent } from './pages/country-detail/country-detail.component';
+import { CountryListComponent } from './pages/country-list/country-list.component';
 
 export const routes: Routes = [
     { path: 'country/:cca2', component: CountryDetailComponent },

@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-form-field appearance="fill">
+    <mat-label>Search</mat-label>
+    <input matInput [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChange()" />
+  </mat-form-field>
+
+  <div class="loading-container" *ngIf="loading; else displayCountries">
+    <app-spinner [text]="'Fetching countries...'"></app-spinner>
+  </div>
+
+  <ng-template #displayCountries>
+    <div class="country-container" *ngIf="countries.length">
+      <div *ngFor="let country of countries">
+        <app-country-item-lg [country]="country"></app-country-item-lg>
+      </div>
+    </div>
+
+    <div class="info-container" *ngIf="!countries.length">
+      <p>
+        No countries found
+        <span *ngIf="visibleSearchTerm"> for "{{ visibleSearchTerm }}"</span>
+      </p>
+    </div>
+  </ng-template>
+</div>

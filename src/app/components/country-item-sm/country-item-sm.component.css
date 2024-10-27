@@ -1,0 +1,32 @@
+.country-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.2s;
+  width: 70px;
+  gap: 3px;
+}
+
+.flag {
+  display: flex;
+  flex: 1;
+}
+
+.flag img {
+  width: 100%;
+  height: 42px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+a {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.country-name {
+  font-size: 12px;
+  text-align: center;
+}

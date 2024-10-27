@@ -1,0 +1,25 @@
+<div class="country-item">
+    <a [routerLink]="['/country', country.cca2]">
+        <div class="flag">
+            <img [lazyLoad]="country.flags.svg" [alt]="country.flags.alt || 'Flag'" />
+        </div>
+    </a>
+
+    <h3>{{ country.name.common }}</h3>
+    <div class="country-context">
+        <span><b>Capital:</b> {{ country.capital }}</span>
+        <span><b>Population:</b> {{ country.population | number }}</span>
+        <span><b>Area:</b> {{ country.area | number }} km²</span>
+    </div>
+
+    <div class="btn-container">
+        <button mat-raised-button [routerLink]="['/country', country.cca2]" class="view-button">
+            View
+        </button>
+
+        <button mat-icon-button (click)="toggleFavorite(country)">
+            <mat-icon [color]="isFavorite(country) ? 'warn' : 'grey'">star</mat-icon>
+        </button>
+    </div>
+
+</div>
