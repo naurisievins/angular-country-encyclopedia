@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CommonModule } from '@angular/common'; // Import CommonModule for ngIf and ngFor
+import { CommonModule } from '@angular/common';
 import { FavoriteService } from '../../services/favorite/favorite.service';
 import { Location } from '@angular/common';
 
@@ -10,13 +10,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterLink } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SpinnerComponent } from '../../components/spinner/spinner.component';
 import { MatTableModule } from '@angular/material/table';
 import { CountryItemSm } from '../../components/country-item-sm/country-item-sm.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { FormsModule } from '@angular/forms'; // Import FormsModule for ngModel
+import { FormsModule } from '@angular/forms';
 import { Country } from '../../models/country.model';
 import { PopulationRankingService } from '../../services/population-ranking/population-ranking.service';
 
@@ -50,7 +50,7 @@ export class CountryDetailComponent {
   selectedLanguage = '';
   dataSource: Array<{ [key: string]: string }> = [];
   displayedColumns = ['CCA2', 'CCN3', 'CCA3', 'CIOC'];
-  rankByPopulation: number | string = 'unknown'
+  rankByPopulation: number | string = 'unknown';
 
   constructor(
     private route: ActivatedRoute,
@@ -73,11 +73,9 @@ export class CountryDetailComponent {
   }
 
   ngOnInit(): void {
-    // Access the route parameter here
     this.countryCca2Code = this.route.snapshot.paramMap.get('id');
 
-    // Alternatively, if you want to subscribe to route parameter changes
-    this.route.paramMap.subscribe((params) => {
+    this.route.paramMap.subscribe(params => {
       this.countryCca2Code = params.get('cca2');
       if (this.countryCca2Code) {
         this.getCountryByCode(this.countryCca2Code);
@@ -92,7 +90,7 @@ export class CountryDetailComponent {
 
     this.loadingCountryData = true;
     this.http.get<Country>(apiUrl).subscribe({
-      next: (data) => {
+      next: data => {
         this.countryData = data;
         this.dataSource = [
           {
@@ -103,7 +101,8 @@ export class CountryDetailComponent {
           },
         ];
 
-        this.rankByPopulation =  this.populationRankingService.getRankByPopulation(data.population)
+        this.rankByPopulation =
+          this.populationRankingService.getRankByPopulation(data.population);
         this.loadingCountryData = false;
 
         const firstKey = Object.keys(data.languages)[0];
@@ -111,7 +110,7 @@ export class CountryDetailComponent {
           this.getCountriesByLang(data.languages[firstKey]);
         }
       },
-      error: (error) => {
+      error: error => {
         this.loadingCountryData = false;
         console.error('Error fetching country data:', error);
       },
@@ -126,11 +125,11 @@ export class CountryDetailComponent {
     this.loadingCountriesByLang = true;
     this.selectedLanguage = language;
     this.http.get<Country[]>(apiUrl).subscribe({
-      next: (data) => {
+      next: data => {
         this.countriesByLang = data;
         this.loadingCountriesByLang = false;
       },
-      error: (error) => {
+      error: error => {
         this.loadingCountriesByLang = false;
         console.error('Error fetching countries:', error);
       },

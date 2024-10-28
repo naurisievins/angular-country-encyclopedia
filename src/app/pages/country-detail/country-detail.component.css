@@ -123,7 +123,7 @@ h1 {
 .mat-mdc-table mat-header-row.mat-mdc-header-row {
   background-color: #d2d8dbad;
   border-radius: 8px 8px 0 0;
-  overflow: hidden
+  overflow: hidden;
 }
 
 mat-header-row,
@@ -150,7 +150,7 @@ mat-row {
 }
 
 .countries-container::after {
-  content: "";
+  content: '';
   flex: auto;
 }
 
@@ -165,7 +165,7 @@ mat-row {
   border-radius: 10px;
   font-size: 14px;
   margin-bottom: 8px;
-  gap: 6px
+  gap: 6px;
 }
 
 .text-align {

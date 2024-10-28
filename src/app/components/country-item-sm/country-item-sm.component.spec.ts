@@ -7,9 +7,8 @@ describe('CountrySearchItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CountryItemSm]
-    })
-    .compileComponents();
+      imports: [CountryItemSm],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CountryItemSm);
     component = fixture.componentInstance;

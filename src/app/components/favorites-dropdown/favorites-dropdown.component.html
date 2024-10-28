@@ -1,29 +1,42 @@
-<button mat-raised-button [matMenuTriggerFor]="favoritesMenu" (click)="onMenuOpen()" class="fav-button" [ngClass]="{'menu-open': isMenuOpen}">
-    <mat-icon>star</mat-icon>
-    <span>My Favorites ({{favoriteCountries.length}})</span>
+<button
+  mat-raised-button
+  [matMenuTriggerFor]="favoritesMenu"
+  (click)="onMenuOpen()"
+  class="fav-button"
+  [ngClass]="{ 'menu-open': isMenuOpen }"
+>
+  <mat-icon>star</mat-icon>
+  <span>My Favorites ({{ favoriteCountries.length }})</span>
 </button>
 
 <div class="menu">
-    <mat-menu (closed)="onMenuClose()" #favoritesMenu="matMenu">
-        <ng-container *ngIf="favoriteCountries.length > 0; else noFavorites">
-            <div mat-menu-item *ngFor="let country of favoriteCountries">
-                <div class="menu-item" style="display: flex; align-items: center; cursor: pointer;">
-                    <div class="click-item" [routerLink]="['/country', country.cca2]">
-                        <img [src]="country.flag" alt="{{country.name}} flag" class="country-flag" />
-                        <span style="margin-left: 8px;">{{ country.name }}</span>
-                    </div>
-                    <button 
-                        class="delete-button"
-                        mat-icon-button 
-                        (click)="removeFromFavorites(country)"
-                    >
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                </div>
-            </div>
-        </ng-container>
-        <ng-template #noFavorites>
-            <span class="center-content">No favorite countries yet</span>
-        </ng-template>
-    </mat-menu>
+  <mat-menu (closed)="onMenuClose()" #favoritesMenu="matMenu">
+    <ng-container *ngIf="favoriteCountries.length > 0; else noFavorites">
+      <div mat-menu-item *ngFor="let country of favoriteCountries">
+        <div
+          class="menu-item"
+          style="display: flex; align-items: center; cursor: pointer"
+        >
+          <div class="click-item" [routerLink]="['/country', country.cca2]">
+            <img
+              [src]="country.flag"
+              alt="{{ country.name }} flag"
+              class="country-flag"
+            />
+            <span style="margin-left: 8px">{{ country.name }}</span>
+          </div>
+          <button
+            class="delete-button"
+            mat-icon-button
+            (click)="removeFromFavorites(country)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noFavorites>
+      <span class="center-content">No favorite countries yet</span>
+    </ng-template>
+  </mat-menu>
 </div>

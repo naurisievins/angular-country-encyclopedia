@@ -20,22 +20,22 @@ import { Country } from '../../models/country.model';
     RouterLink,
   ],
   templateUrl: './favorites-dropdown.component.html',
-  styleUrls: ['./favorites-dropdown.component.css']
+  styleUrls: ['./favorites-dropdown.component.css'],
 })
 export class FavoritesDropdownComponent {
   @Input() country!: Country;
 
-  favoriteCountries: FavCountry[] = []
+  favoriteCountries: FavCountry[] = [];
   private favoritesSubscription: Subscription;
 
   isMenuOpen = false;
 
   constructor(private favoriteService: FavoriteService) {
-    this.favoritesSubscription = this.favoriteService.getFavoritesObservable().subscribe(
-      (favorites) => {
+    this.favoritesSubscription = this.favoriteService
+      .getFavoritesObservable()
+      .subscribe(favorites => {
         this.favoriteCountries = favorites;
-      }
-    );
+      });
   }
 
   removeFromFavorites(country: FavCountry) {
@@ -50,6 +50,6 @@ export class FavoritesDropdownComponent {
     this.isMenuOpen = true;
   }
   onMenuClose(): void {
-    this.isMenuOpen = false
+    this.isMenuOpen = false;
   }
 }

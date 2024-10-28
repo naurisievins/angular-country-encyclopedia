@@ -5,13 +5,13 @@ import { BehaviorSubject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FavoriteService {
   private favorites: Map<string, FavCountry> = new Map();
   private favoritesSubject = new BehaviorSubject<FavCountry[]>([]);
   favorites$ = this.favoritesSubject.asObservable();
-  
+
   constructor(private snackBar: MatSnackBar) {
     this.loadFavoritesFromStorage();
     this.favoritesSubject.next(this.getFavorites());
@@ -21,7 +21,9 @@ export class FavoriteService {
     const storedFavorites = localStorage.getItem('favoriteCountries');
     if (storedFavorites) {
       const parsedFavorites = JSON.parse(storedFavorites);
-      this.favorites = new Map(parsedFavorites.map((item: FavCountry) => [item.cca2!, item]));
+      this.favorites = new Map(
+        parsedFavorites.map((item: FavCountry) => [item.cca2!, item])
+      );
       this.favoritesSubject.next(this.getFavorites());
     }
   }
@@ -44,7 +46,7 @@ export class FavoriteService {
         cca2: country.cca2,
       };
       this.favorites.set(country.cca2, countryData);
-      if (country.name.common === "Latvia") {
+      if (country.name.common === 'Latvia') {
         this.showSnackbar(`Latvija pievienota favorītiem! 🤘`);
       } else {
         this.showSnackbar(`${country.name.common} added to favorites.`);
@@ -59,7 +61,7 @@ export class FavoriteService {
   }
 
   removeFromFavorites(country: FavCountry) {
-    if (!country.cca2) return
+    if (!country.cca2) return;
 
     if (this.isFavorite(country.cca2)) {
       this.favorites.delete(country.cca2);

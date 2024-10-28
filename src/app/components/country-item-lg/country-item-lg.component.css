@@ -18,7 +18,11 @@
   align-items: center;
   transition: box-shadow 0.2s;
   width: 260px;
-  transition: transform 0.8s ease, box-shadow 0.8s ease, border 0.3s ease, background-color 0.3s ease;
+  transition:
+    transform 0.8s ease,
+    box-shadow 0.8s ease,
+    border 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .country-item:hover {
@@ -43,7 +47,6 @@ button {
   justify-content: center;
 }
 
-
 .flag {
   display: flex;
   flex: 1;
@@ -58,7 +61,7 @@ button {
 
 h3 {
   padding: 10px;
-  margin: 0
+  margin: 0;
 }
 
 .country-context {

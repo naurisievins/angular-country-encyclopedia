@@ -6,13 +6,8 @@ import { FavoritesDropdownComponent } from '../favorites-dropdown/favorites-drop
 @Component({
   selector: 'app-top-nav',
   standalone: true,
-  imports: [
-    MatButtonModule,
-    RouterLink,
-    FavoritesDropdownComponent,
-  ],
+  imports: [MatButtonModule, RouterLink, FavoritesDropdownComponent],
   templateUrl: './top-nav.component.html',
-  styleUrl: './top-nav.component.css'
+  styleUrl: './top-nav.component.css',
 })
-export class TopNavComponent {
-}
+export class TopNavComponent {}

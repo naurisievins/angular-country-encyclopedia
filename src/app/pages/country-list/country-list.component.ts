@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { MatCardModule } from '@angular/material/card'; // Import MatCardModule
-import { MatListModule } from '@angular/material/list'; // Import MatListModule
-import { MatInputModule } from '@angular/material/input'; // Import MatInputModule
-import { FormsModule } from '@angular/forms'; // Import FormsModule for ngModel
-import { RouterLink } from '@angular/router'; // Import RouterLink
-import { CommonModule } from '@angular/common'; // Import CommonModule for ngIf and ngFor
-import { MatTableModule } from '@angular/material/table'; // Import MatTableModule
-import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
-import { HttpClient } from '@angular/common/http'; // Import HttpClient
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { HttpClient } from '@angular/common/http';
 import { CountryItemLg } from '../../components/country-item-lg/country-item-lg.component';
 import { SpinnerComponent } from '../../components/spinner/spinner.component';
 import { debounceTime } from 'rxjs/operators';
@@ -29,11 +29,10 @@ import { PopulationRankingService } from '../../services/population-ranking/popu
     MatIconModule,
     CountryItemLg,
     SpinnerComponent,
-  ],  
+  ],
   templateUrl: './country-list.component.html',
-  styleUrl: './country-list.component.css'
+  styleUrl: './country-list.component.css',
 })
-
 export class CountryListComponent {
   countries: Country[] = [];
   searchTerm = '';
@@ -47,8 +46,8 @@ export class CountryListComponent {
     this.fetchCountries('');
 
     this.searchSubject
-    .pipe(debounceTime(500))
-    .subscribe((searchTerm) => this.fetchCountries(searchTerm));
+      .pipe(debounceTime(500))
+      .subscribe(searchTerm => this.fetchCountries(searchTerm));
   }
 
   constructor(
@@ -63,24 +62,25 @@ export class CountryListComponent {
     const apiUrl = `https://restcountries.com/v3.1/all?fields=${fields}`;
     const searchApiUrl = `https://restcountries.com/v3.1/translation/${sanitizedTerm}?fields=${fields}`;
 
-    this.loading = true
-    this.visibleSearchTerm = sanitizedTerm
+    this.loading = true;
+    this.visibleSearchTerm = sanitizedTerm;
 
     this.http.get<Country[]>(sanitizedTerm ? searchApiUrl : apiUrl).subscribe({
-      next: (data) => {
-        this.countries = data
-        this.loading = false
+      next: data => {
+        this.countries = data;
+        this.loading = false;
 
         if (!sanitizedTerm.length) {
-          const populationArray = data.map(country => country.population).filter(pop => pop != null);
+          const populationArray = data
+            .map(country => country.population)
+            .filter(pop => pop != null);
           this.populationRankingService.setPopulation(populationArray);
         }
-        
       },
-      error: (error) => {
-        this.countries = []
-        this.loading =  false
-      }
+      error: error => {
+        this.countries = [];
+        this.loading = false;
+      },
     });
   }
 
@@ -102,7 +102,6 @@ export class CountryListComponent {
 
   // Only allows letters (A-Z, a-z)
   sanitizeSearchTerm(searchTerm: string): string {
-    return searchTerm.replace(/[^a-zA-Z]/g, ''); 
+    return searchTerm.replace(/[^a-zA-Z]/g, '');
   }
-
 }

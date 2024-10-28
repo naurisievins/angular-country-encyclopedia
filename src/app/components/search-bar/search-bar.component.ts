@@ -6,8 +6,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   standalone: true,
   imports: [MatSidenavModule],
   templateUrl: './search-bar.component.html',
-  styleUrl: './search-bar.component.css'
+  styleUrl: './search-bar.component.css',
 })
-export class SearchBarComponent {
-
-}
+export class SearchBarComponent {}

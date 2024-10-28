@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
+import { MatIconModule } from '@angular/material/icon';
 import { FavoriteService } from '../../services/favorite/favorite.service';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -9,14 +9,9 @@ import { Country } from '../../models/country.model';
 @Component({
   selector: 'app-country-item-sm',
   standalone: true,
-  imports: [
-    MatIconModule,
-    RouterLink,
-    CommonModule,
-    MatButtonModule
-  ],
+  imports: [MatIconModule, RouterLink, CommonModule, MatButtonModule],
   templateUrl: './country-item-sm.component.html',
-  styleUrl: './country-item-sm.component.css'
+  styleUrl: './country-item-sm.component.css',
 })
 export class CountryItemSm {
   @Input() country: any; // TODO

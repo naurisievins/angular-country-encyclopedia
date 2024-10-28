@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PopulationRankingService {
   private population: number[] = [];
@@ -9,7 +9,7 @@ export class PopulationRankingService {
   constructor() {
     this.loadPopulationFromStorage();
   }
-  
+
   private loadPopulationFromStorage(): void {
     const storedPopulation = localStorage.getItem('populationRanking');
 
@@ -18,7 +18,9 @@ export class PopulationRankingService {
     }
   }
   setPopulation(populationArray: number[]): void {
-    this.population = Array.from(new Set(populationArray)).sort((a, b) => b - a);
+    this.population = Array.from(new Set(populationArray)).sort(
+      (a, b) => b - a
+    );
     this.savePopulationToStorage();
   }
 

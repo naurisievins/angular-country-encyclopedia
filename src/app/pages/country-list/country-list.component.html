@@ -1,7 +1,11 @@
 <div class="container">
   <mat-form-field appearance="fill">
     <mat-label>Search</mat-label>
-    <input matInput [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChange()" />
+    <input
+      matInput
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="onSearchTermChange()"
+    />
   </mat-form-field>
 
   <div class="loading-container" *ngIf="loading; else displayCountries">

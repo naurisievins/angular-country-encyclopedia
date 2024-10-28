@@ -4,7 +4,7 @@ import { CountryDetailComponent } from './pages/country-detail/country-detail.co
 import { CountryListComponent } from './pages/country-list/country-list.component';
 
 export const routes: Routes = [
-    { path: 'country/:cca2', component: CountryDetailComponent },
-    { path: '', component: CountryListComponent },
-    { path: '**', redirectTo: '', pathMatch: 'full' }
+  { path: 'country/:cca2', component: CountryDetailComponent },
+  { path: '', component: CountryListComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
