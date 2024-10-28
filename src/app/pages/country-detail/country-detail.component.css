@@ -3,6 +3,10 @@
   flex: 1;
 }
 
+::ng-deep .mat-button-toggle .mat-button-toggle-ripple {
+  border-radius: 20px;
+}
+
 .wrapper {
   display: flex;
   flex: 1;
@@ -171,6 +175,38 @@ mat-row {
 
 .text-align {
   text-align: center;
+}
+
+mat-button-toggle-group {
+  flex-wrap: wrap;
+  border: none;
+  border-radius: 0;
+  gap: 5px;
+}
+
+mat-button-toggle {
+  display: flex;
+  flex: 1;
+  box-sizing: border-box;
+  align-items: center;
+  flex-direction: row;
+}
+
+.mat-button-toggle-appearance-standard
+  + .mat-button-toggle-appearance-standard {
+  border: none;
+  border-radius: 20px;
+}
+
+.mat-button-toggle-group-appearance-standard
+  .mat-button-toggle-appearance-standard:hover {
+  border-radius: 20px;
+}
+
+.mat-button-toggle-appearance-standard.mat-button-toggle-checked {
+  background-color: white;
+  border-radius: 20px;
+  color: #005cbb;
 }
 
 @media screen and (max-width: 1000px) {
