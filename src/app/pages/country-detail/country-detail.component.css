@@ -52,12 +52,8 @@ mat-card-content {
 }
 
 .flag-container img {
-  max-width: 100%;
-  min-width: 300px;
   max-height: 350px;
-  object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid lightgray
+  object-fit: contain;
 }
 
 .flag-container {
@@ -69,6 +65,8 @@ mat-card-content {
   border: 1px solid lightgray;
   border-radius: 10px;
   gap: 20px;
+  min-width: 300px;
+  height: fit-content;
 }
 
 .top-container {
@@ -166,7 +164,7 @@ mat-row {
   border: 1px solid lightgray;
   border-radius: 10px;
   font-size: 14px;
-  margin: 0px 0 8px 0;
+  margin-bottom: 8px;
   gap: 6px
 }
 
