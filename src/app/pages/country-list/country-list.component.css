@@ -3,6 +3,10 @@
   flex: 1;
 }
 
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #e0e5e7 !important;
+}
+
 .container {
   box-sizing: border-box;
   display: flex;

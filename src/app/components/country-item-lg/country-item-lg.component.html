@@ -1,7 +1,7 @@
 <div class="country-item">
   <a [routerLink]="['/country', country.cca2]">
     <div class="flag">
-      <img [lazyLoad]="country.flags.svg" [alt]="country.flags.alt || 'Flag'" />
+      <img [lazyLoad]="country.flags.svg" [alt]="country.name.common + ' flag' || 'Flag'" />
     </div>
   </a>
 
