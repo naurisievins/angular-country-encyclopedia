@@ -183,9 +183,6 @@ mat-row {
   mat-card-content {
     padding: 0;
   }
-}
-
-@media screen and (max-width: 400px) {
   .wrapper {
     border-radius: 0;
   }
