@@ -93,7 +93,7 @@ a {
 
 @media screen and (max-width: 600px) {
   .country-item {
-    width: 160px;
+    width: 150px;
     padding-bottom: 5px;
   }
   .flag,
