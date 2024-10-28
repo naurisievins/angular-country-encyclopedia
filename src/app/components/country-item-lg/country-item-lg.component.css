@@ -78,3 +78,34 @@ a {
   flex-direction: column;
   flex: 1;
 }
+
+@media screen and (max-width: 800px) {
+  .country-item {
+    width: 200px;
+  }
+  .flag img {
+    height: 100px;
+  }
+  h3 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .country-item {
+    width: 110px;
+  }
+  .flag img {
+    height: 50px;
+  }
+  h3 {
+    font-size: 12px;
+  }
+  .country-context {
+    display: none;
+  }
+  .view-button {
+    height: 26px;
+    align-self: center;
+  }
+}

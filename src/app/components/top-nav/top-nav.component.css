@@ -1,6 +1,7 @@
 .top-nav {
   display: flex;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 20px;
   align-items: center;
   background-color: #404f61;
   color: rgb(238, 237, 237);
@@ -35,4 +36,19 @@ a {
   justify-content: center;
   align-items: center;
   gap: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+  app-favorites-dropdown {
+    margin-left: auto;
+  }
+  h1 {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 24px;
+  }
 }

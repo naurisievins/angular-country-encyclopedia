@@ -35,7 +35,6 @@ mat-card-content {
 .grid-container {
   display: flex;
   flex: 1;
-  flex-wrap: wrap;
   flex-direction: column;
 }
 
@@ -51,11 +50,6 @@ mat-card-content {
   min-width: 300px;
 }
 
-.flag-container img {
-  max-height: 350px;
-  object-fit: contain;
-}
-
 .flag-container {
   flex: 1;
   display: flex;
@@ -65,14 +59,21 @@ mat-card-content {
   border: 1px solid lightgray;
   border-radius: 10px;
   gap: 20px;
-  min-width: 300px;
+  width: 100%;
+  min-width: 250px;
   height: fit-content;
+  box-sizing: border-box;
+}
+
+.flag-container img {
+  max-height: 250px;
+  object-fit: contain;
+  width: 100%;
 }
 
 .top-container {
   display: flex;
-  width: 100%;
-  background-color: #d2d8db83;
+  background-color: #d2d8dbde;
   position: sticky;
   top: 5px;
   border: 1px solid lightgray;
@@ -170,4 +171,22 @@ mat-row {
 
 .text-align {
   text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+  mat-card {
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  mat-card-content {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .wrapper {
+    border-radius: 0;
+  }
 }

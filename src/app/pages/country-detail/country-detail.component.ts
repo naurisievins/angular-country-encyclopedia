@@ -118,7 +118,6 @@ export class CountryDetailComponent {
   }
 
   getCountriesByLang(language: string): void {
-    console.log(this.selectedLanguage, language);
     const fields = 'name,cca2,flags';
     const apiUrl = `https://restcountries.com/v3.1/lang/${language}?fields=${fields}`;
 
