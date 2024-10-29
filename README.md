@@ -1,27 +1,46 @@
-# CountryEncyclopediaSpa
+# Country Encyclopedia
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+A project created with **Angular 18** utilizing components from the Angular Material UI library.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To set up the development server locally, follow these steps:
 
-## Code scaffolding
+1. **Install dependencies**  
+   Run the following command to install all necessary packages:  
+   `npm install`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. **Run the server locally**  
+   Start the development server with this command:  
+   `ng serve`
 
-## Build
+3. **Access the application**  
+   Once the server is running, open your browser and navigate to:  
+   `http://localhost:4200`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Live Demo
 
-## Running unit tests
+You can access a live version of this project hosted on Netlify:  
+[Country Encyclopedia on Netlify](https://angular-country-encyclopedia.netlify.app/)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Screenshots
+![Home Page Screenshot](https://i.ibb.co/BsghTtH/main.jpg)
+![Country Detailed View Screenshot](https://i.ibb.co/gD1hvtm/details.jpg)
+![Home Page Responsive Screenshot](https://i.ibb.co/P5xcbcg/responsive-main.jpg)
+![Country Detailed View Responsive](https://i.ibb.co/Qdbw30N/responsive-details.jpg)
 
-## Running end-to-end tests
+## Features
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+This project includes the following features:
 
-## Further help
+- **Search Bar with Debounce**  
+   Minimizes API calls by only executing searches once the user has stopped typing, improving performance.
+  
+- **Image Lazy Loading**  
+   Loads images as they appear in the viewport, enhancing performance by reducing initial load time and conserving bandwidth.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- **Favorites with Local Storage**  
+   Lets users mark countries as favorites, storing them locally for easy access and retrieval, even after reloading the page.
+
+- **Responsive Design**  
+   Provides a seamless and consistent user experience across devices, adjusting the layout for optimal display on desktops, tablets, and mobile devices.
