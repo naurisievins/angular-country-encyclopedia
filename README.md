@@ -24,10 +24,10 @@ You can access a live version of this project hosted on Netlify:
 [Country Encyclopedia on Netlify](https://angular-country-encyclopedia.netlify.app/)
 
 ## Screenshots
-![Home Page Screenshot](https://i.ibb.co/gD1hvtm/details.jpg)
-![Country Detailed View Screenshot](https://i.ibb.co/BsghTtH/main.jpg)
-![Home Page Responsive Screenshot](https://i.ibb.co/Qdbw30N/responsive-details.jpg)
-![Country Detailed View Responsive](https://i.ibb.co/P5xcbcg/responsive-main.jpg)
+![Home Page Screenshot](https://i.ibb.co/BsghTtH/main.jpg)
+![Country Detailed View Screenshot](https://i.ibb.co/gD1hvtm/details.jpg)
+![Home Page Responsive Screenshot](https://i.ibb.co/P5xcbcg/responsive-main.jpg)
+![Country Detailed View Responsive](https://i.ibb.co/Qdbw30N/responsive-details.jpg)
 
 ## Features
 
