@@ -1,32 +1,29 @@
 import { Component } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
-import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
-import { MatIconModule } from '@angular/material/icon';
 import { HttpClient } from '@angular/common/http';
-import { CountryItemLg } from '../../components/country-item-lg/country-item-lg.component';
-import { SpinnerComponent } from '../../components/spinner/spinner.component';
-import { debounceTime } from 'rxjs/operators';
+import { FormsModule } from '@angular/forms';
+
+import { MatInputModule } from '@angular/material/input';
+
 import { Subject } from 'rxjs';
-import { Country } from '../../models/country.model';
+import { debounceTime } from 'rxjs/operators';
+
+import { SpinnerComponent } from '../../components/spinner/spinner.component';
+import { CountryItemLg } from '../../components/country-item-lg/country-item-lg.component';
+
 import { PopulationRankingService } from '../../services/population-ranking/population-ranking.service';
+
+import { Country } from '../../models/country.model';
+
+import config from '../../config/config.json';
 
 @Component({
   selector: 'app-country-list',
   standalone: true,
   imports: [
-    MatCardModule,
-    MatListModule,
     MatInputModule,
     FormsModule,
     CommonModule,
-    RouterLink,
-    MatTableModule,
-    MatIconModule,
     CountryItemLg,
     SpinnerComponent,
   ],
@@ -59,8 +56,8 @@ export class CountryListComponent {
     const sanitizedTerm = this.sanitizeSearchTerm(searchTerm);
 
     const fields = 'name,cca2,flags,area,population,capital';
-    const apiUrl = `https://restcountries.com/v3.1/all?fields=${fields}`;
-    const searchApiUrl = `https://restcountries.com/v3.1/translation/${sanitizedTerm}?fields=${fields}`;
+    const apiUrl = `${config.countriesApi}all?fields=${fields}`;
+    const searchApiUrl = `${config.countriesApi}translation/${sanitizedTerm}?fields=${fields}`;
 
     this.loading = true;
     this.visibleSearchTerm = sanitizedTerm;

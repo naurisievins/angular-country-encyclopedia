@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
+
+import { MatButtonModule } from '@angular/material/button';
+
 import { FavoritesDropdownComponent } from '../favorites-dropdown/favorites-dropdown.component';
 
 @Component({

@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { FavoriteService } from '../../services/favorite/favorite.service';
-import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
+
+import { FavoriteService } from '../../services/favorite/favorite.service';
 import { Country } from '../../models/country.model';
 
 @Component({
@@ -14,7 +15,7 @@ import { Country } from '../../models/country.model';
   styleUrl: './country-item-sm.component.css',
 })
 export class CountryItemSm {
-  @Input() country: any; // TODO
+  @Input() country!: Country;
 
   constructor(private favoriteService: FavoriteService) {}
 

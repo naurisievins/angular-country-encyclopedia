@@ -1,24 +1,28 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FavoriteService } from '../../services/favorite/favorite.service';
+import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+
+import { RouterLink } from '@angular/router';
 
 import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { SpinnerComponent } from '../../components/spinner/spinner.component';
 import { MatTableModule } from '@angular/material/table';
-import { CountryItemSm } from '../../components/country-item-sm/country-item-sm.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
 import { FormsModule } from '@angular/forms';
-import { Country } from '../../models/country.model';
+
+import { SpinnerComponent } from '../../components/spinner/spinner.component';
+import { CountryItemSm } from '../../components/country-item-sm/country-item-sm.component';
+
+import { FavoriteService } from '../../services/favorite/favorite.service';
 import { PopulationRankingService } from '../../services/population-ranking/population-ranking.service';
+
+import { Country } from '../../models/country.model';
+
+import config from '../../config/config.json';
 
 @Component({
   selector: 'app-country-detail',
@@ -26,9 +30,6 @@ import { PopulationRankingService } from '../../services/population-ranking/popu
   imports: [
     CommonModule,
     MatCardModule,
-    MatChipsModule,
-    MatListModule,
-    MatProgressSpinnerModule,
     RouterLink,
     MatIconModule,
     MatButtonModule,
@@ -60,6 +61,17 @@ export class CountryDetailComponent {
     private populationRankingService: PopulationRankingService
   ) {}
 
+  ngOnInit(): void {
+    this.countryCca2Code = this.route.snapshot.paramMap.get('id');
+
+    this.route.paramMap.subscribe(params => {
+      this.countryCca2Code = params.get('cca2');
+      if (this.countryCca2Code) {
+        this.getCountryByCode(this.countryCca2Code);
+      }
+    });
+  }
+
   goBack(): void {
     this.location.back();
   }
@@ -72,21 +84,10 @@ export class CountryDetailComponent {
     return this.favoriteService.isFavorite(country.cca2);
   }
 
-  ngOnInit(): void {
-    this.countryCca2Code = this.route.snapshot.paramMap.get('id');
-
-    this.route.paramMap.subscribe(params => {
-      this.countryCca2Code = params.get('cca2');
-      if (this.countryCca2Code) {
-        this.getCountryByCode(this.countryCca2Code);
-      }
-    });
-  }
-
   getCountryByCode(countryCode: string): void {
     const fields =
       'name,cca2,ccn3,cca3,cioc,population,flags,area,languages,borders';
-    const apiUrl = `https://restcountries.com/v3.1/alpha/${countryCode}?fields=${fields}`;
+    const apiUrl = `${config.countriesApi}alpha/${countryCode}?fields=${fields}`;
 
     this.loadingCountryData = true;
     this.http.get<Country>(apiUrl).subscribe({
@@ -119,7 +120,7 @@ export class CountryDetailComponent {
 
   getCountriesByLang(language: string): void {
     const fields = 'name,cca2,flags';
-    const apiUrl = `https://restcountries.com/v3.1/lang/${language}?fields=${fields}`;
+    const apiUrl = `${config.countriesApi}lang/${language}?fields=${fields}`;
 
     this.loadingCountriesByLang = true;
     this.selectedLanguage = language;

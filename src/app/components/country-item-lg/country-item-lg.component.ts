@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { FavoriteService } from '../../services/favorite/favorite.service';
-import { RouterLink } from '@angular/router';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { Country } from '../../models/country.model';
+import { RouterLink } from '@angular/router';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+
+import { FavoriteService } from '../../services/favorite/favorite.service';
+import { Country } from '../../models/country.model';
 
 @Component({
   selector: 'app-country-item-lg',

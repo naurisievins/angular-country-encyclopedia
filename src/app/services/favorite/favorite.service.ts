@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { Country } from '../../models/country.model';
 import { FavCountry } from '../../models/country.model';
-import { BehaviorSubject } from 'rxjs';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
