@@ -97,8 +97,8 @@ export class CountryListComponent {
     return this.favorites.has(country.cca2);
   }
 
-  // Only allows letters (A-Z, a-z)
+  // Only allows letters (A-Z, a-z) and latin-based characters
   sanitizeSearchTerm(searchTerm: string): string {
-    return searchTerm.replace(/[^a-zA-Z]/g, '');
+    return searchTerm.replace(/[^a-zA-Z\u00C0-\u017F]/g, '');
   }
 }
